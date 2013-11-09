@@ -27,3 +27,5 @@ public class TestMap extends Activity {
                 .position(sydney));
     }
 }
+
+//test change to commit
