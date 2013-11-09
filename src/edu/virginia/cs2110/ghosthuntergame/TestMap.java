@@ -27,5 +27,3 @@ public class TestMap extends Activity {
                 .position(sydney));
     }
 }
-
-//testing commitS
