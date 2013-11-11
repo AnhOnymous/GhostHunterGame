@@ -57,22 +57,43 @@ public class Bones {
 	}
 
 	private double calculateLeftBound(double userLongitude, double startLongitude, double userRadius) {
-		// TODO Auto-generated method stub
+		
 		return userLongitude - startLongitude - userRadius;
 	}
 
 	private double calculateRightBound(double userLongitude, double startLongitude, double userRadius) {
-		// TODO Auto-generated method stub
+		
 		return userLongitude - startLongitude + userRadius;
 	}
 
 	private double calculateUpperBound(double userLatitude, double startLatitude, double userRadius) {
-		// TODO Auto-generated method stub
+		
 		return userLatitude - startLatitude - userRadius;
 	}
 
 	private double calculateLowerBound(double userLatitude, double startLatitude, double userRadius) {
-		// TODO Auto-generated method stub
+		
 		return userLatitude - startLatitude - userRadius;
 	}
+	
+	public void generateGhost(){
+		ghost(longitude, latitude, teatherRadius);
+	}
+	
+	//when the bones are picked up, they are destroyed. when the bones are destroyed, the ghost is also destroyed
+	public void onPickUp(){
+		//something like this...
+		map.removeBones();
+		//could use a serial number to keep track of each instance of bones
+		
+		//when the bones are picked up, the ghost is destroyed
+		ghost.onPickedUp();
+	}
+	
+	//when the ghost is killed, the ghost no longer exists on the map. When the ghost is killed, the bones are destroyed
+	public void onKilled(){
+		map.removeBones();
+	}
+	
+	
 }
