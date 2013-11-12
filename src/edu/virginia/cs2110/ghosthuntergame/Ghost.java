@@ -13,6 +13,8 @@ public class Ghost {
 	
 	public Ghost() {
 		isActive = true;
+		hasBones = true;
+		playerInZone = false;
 		
 	}
 }
