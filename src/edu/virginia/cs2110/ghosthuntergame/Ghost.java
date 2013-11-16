@@ -67,38 +67,25 @@ public class Ghost {
 	public void ghostMove(double elapsedTime) {
 
 		// targets player
-		if (isAggressive) {
-			this.latMove = this.speed * elapsedTime;
-			this.longMove = this.speed * elapsedTime;
-
-			if (targetPlayer.getLat < this.ghostLat) {
-				latMove *= -1;
-			}
-			if (targetPlayer.getLong < this.ghostLong) {
-				latMove *= -1;
-			}
-
-			this.ghostLat += this.latMove;
-			this.ghostLong += this.longMove;
-		}
-		// moves at random
-		else {
-			Random rand = new Random();
-			this.latMove = this.speed * elapsedTime;
-			this.longMove = this.speed * elapsedTime;
-			
-
-			if (targetPlayer.getLat < this.ghostLat) {
-				latMove *= -1;
-			}
-			if (targetPlayer.getLong < this.ghostLong) {
-				latMove *= -1;
-			}
-
-			this.ghostLat += this.latMove;
-			this.ghostLong += this.longMove;
-
-		}
+		/*
+		 * if (isAggressive) { this.latMove = this.speed * elapsedTime;
+		 * this.longMove = this.speed * elapsedTime;
+		 * 
+		 * if (targetPlayer.getLat < this.ghostLat) { latMove *= -1; } if
+		 * (targetPlayer.getLong < this.ghostLong) { latMove *= -1; }
+		 * 
+		 * this.ghostLat += this.latMove; this.ghostLong += this.longMove; } //
+		 * moves at random else { Random rand = new Random(); this.latMove =
+		 * this.speed * elapsedTime; this.longMove = this.speed * elapsedTime;
+		 * 
+		 * 
+		 * if (targetPlayer.getLat < this.ghostLat) { latMove *= -1; } if
+		 * (targetPlayer.getLong < this.ghostLong) { latMove *= -1; }
+		 * 
+		 * this.ghostLat += this.latMove; this.ghostLong += this.longMove;
+		 * 
+		 * }
+		 */
 	}
 
 	public boolean isActive() {

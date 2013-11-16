@@ -1,4 +1,4 @@
-package edu.virginia.cs2110.ghosthunter;
+/*package edu.virginia.cs2110.ghosthunter;
 
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
@@ -26,4 +26,4 @@ public class TestMap extends Activity {
                 .snippet("The most populous city in Australia.")
                 .position(sydney));
     }
-}
+}*/
