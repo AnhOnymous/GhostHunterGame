@@ -3,6 +3,7 @@ package edu.virginia.cs2110.ghosthuntergame;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.app.Activity;
 
 public class MainActivity extends Activity {
 
