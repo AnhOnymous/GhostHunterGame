@@ -5,9 +5,6 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.widget.Toast;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -52,20 +49,11 @@ public class MainActivity extends FragmentActivity {
 			// Getting longitude of the current location
 			double longitude = location.getLongitude();
 
-			// Creating a LatLng object for the current location
-			LatLng latLng = new LatLng(latitude, longitude);
-
 			myPosition = new LatLng(latitude, longitude);
 
 			map.addMarker(new MarkerOptions().position(myPosition).title(
 					"Start"));
+
 		}
-	}
-
-	public double[] getPlayArea() {
-		double playArea[] = new double[4];
-		
-		return playArea;
-
 	}
 }
