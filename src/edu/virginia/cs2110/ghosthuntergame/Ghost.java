@@ -183,12 +183,11 @@ Bones(targetPlayer.getPlayerLongitude(), targetPlayer.getPlayerLatitude(), map.g
 		private double endLongitude;
 		private double endLatitude;
 
-		public void setStartLongitude(double startLongitude) {
-			this.startLongitude = startLongitude;
-		}
-
-		public void setStartLatitude(double startLatitude) {
-			this.startLatitude = startLatitude;
+		public void setStartLongitudeLatitude(double[] LatLang) {
+			this.startLongitude = LatLang[0];
+			this.startLatitude = LatLang[1];
+			this.endLongitude = LatLang[2];
+			this.endLatitude = LatLang[3];
 		}
 
 		public Bones(double userLongitude, double userLatitude,
