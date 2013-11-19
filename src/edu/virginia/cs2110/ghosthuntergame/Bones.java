@@ -106,7 +106,7 @@ public class Bones {
 		return userLatitude - startLatitude - userRadius;
 	}
 
-	public void generateGhost() {
+	/*public void generateGhost() {
 		ghost(longitude, latitude, teatherRadius);
 	}
 
@@ -125,6 +125,6 @@ public class Bones {
 	// ghost is killed, the bones are destroyed
 	public void onKilled() {
 		map.removeBones();
-	}
+	}*/
 
 }
