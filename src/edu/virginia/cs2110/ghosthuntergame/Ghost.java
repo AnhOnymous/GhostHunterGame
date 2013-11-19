@@ -190,6 +190,18 @@ public class Ghost {
 		private double latitude;
 		private boolean pickedUp;
 		private double teatherRadius;
+		private double startLongitude;
+		private double startLatitude;
+		private double endLongitude;
+		private double endLatitude;
+
+		public void setStartLongitude(double startLongitude) {
+			this.startLongitude = startLongitude;
+		}
+
+		public void setStartLatitude(double startLatitude) {
+			this.startLatitude = startLatitude;
+		}
 
 		public Bones(double userLongitude, double userLatitude,
 				double startLongitude, double startLatitude, double userRadius, double endLongitude, double endLatitude) {
@@ -318,6 +330,8 @@ public class Ghost {
 			this.onKill();
 			
 		}
+		
+		
 
 		/*
 		// when the bones are picked up, they are destroyed. when the bones are
