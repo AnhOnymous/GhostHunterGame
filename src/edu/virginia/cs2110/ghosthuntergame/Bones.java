@@ -1,7 +1,8 @@
 
 	public class Bones{
 
-		private double longitude;
+	
+
 		private double latitude;
 		private boolean pickedUp;
 		private double teatherRadius;
@@ -131,6 +132,15 @@
 				double endLatitude, double userRadius) {
 
 			return endLatitude - userLatitude  + userRadius;
+		}
+		
+		private double longitude;
+		public double getLongitude() {
+			return longitude;
+		}
+
+		public double getLatitude() {
+			return latitude;
 		}
 		
 	}

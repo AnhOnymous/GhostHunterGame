@@ -1,30 +1,29 @@
 package edu.virginia.cs2110.ghosthuntergame;
 
 public class Ghost {
-	private boolean isActive;
-	private boolean hasBones;
+
 	private double ghostLong;
 	private double ghostLat;
 	private double tetherLimit;
+	private double boneLat;
+	private double boneLong;
 
-	public Ghost() {
-		isActive = true;
-		hasBones = true;
-
-		// temporary Ghost and Bones positions until
-		// we figure out how we're gonna do this.
-
-		ghostLong = 10.0;
-		ghostLat = 10.0;
-		tetherLimit = 10.0;
-		
-	}
+//	public Ghost() {
+//		ghostLong = 10.0;
+//		ghostLat = 10.0;
+//		tetherLimit = 10.0;
+//		
+//	}
 
 	
 	
 	//Constructor
-	public Ghost(Player targetPlayer) {
+	//TODO: takes the bone's lat and long and creates a ghost somewhere inside the teather limit
+	//???how big would it be in terms of lat/long points to make it a constant size in feet
+	public Ghost(Bones bones) {
 
+		boneLat=bones.getLatitude();
+		boneLong=bones.getLongitude();
 		
 	}
 
@@ -50,21 +49,8 @@ public class Ghost {
 	
 	
 	
-	public boolean isActive() {
-		return isActive;
-	}
+	
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public boolean isHasBones() {
-		return hasBones;
-	}
-
-	public void setHasBones(boolean hasBones) {
-		this.hasBones = hasBones;
-	}
 
 	public double getGhostLong() {
 		return ghostLong;

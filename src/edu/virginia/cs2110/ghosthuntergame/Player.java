@@ -20,6 +20,9 @@ public class Player {
 	private double playerLatitude;
 	private double playerLongitude;
 	
+	public ArrayList<Ghost> ghostList = new ArrayList<Ghost>();
+	public ArrayList<Bones> bonesList = new ArrayList<Bones>();
+	
 	double startLongitude;
 	double startLatitude;
 	double endLongitude;
@@ -47,14 +50,20 @@ public class Player {
 	}
 	
 	//generate bones and ghosts
-	public ArrayList<Ghosts> generateGhosts(){
-		for(int i; i < 10; i ++){
-			Ghost(this);
+	public ArrayList<Ghost> generateGhosts(){
+		for(int i = 0; i < 10; i ++){
+			Ghost ghost = new Ghost(bonesList.get(i));
+			ghostList.add(ghost);
 		}
+		return ghostList;
 	}
 	
 	public ArrayList<Bones> generateBones(){
-		
+		for(int i = 0 ; i < 10; i++){
+			Bones bones = new Bones(startLongitude, startLatitude, endLongitude, endLatitude);
+			bonesList.add(bones);
+		}
+		return bonesList;
 	}
 	
 //	public void gainMoney(int x){
@@ -75,21 +84,11 @@ public class Player {
 	}
 
 
-	public int getMaxHp() {
-		return maxHp;
-	}
-
-	public void setMaxHp(int maxHp) {
-		this.maxHp = maxHp;
-	}
-
+	
 	public int getCurrentHp() {
 		return currentHp;
 	}
 
-	public void setCurrentHp(int currentHp) {
-		this.currentHp = currentHp;
-	}
 
 	public double getPlayerLatitude() {
 		return playerLatitude;
