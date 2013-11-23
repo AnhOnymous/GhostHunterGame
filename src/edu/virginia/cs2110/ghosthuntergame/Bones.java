@@ -9,6 +9,9 @@
 		private double startLatitude;
 		private double endLongitude;
 		private double endLatitude;
+		private double userLongitude;
+		private double userRadius;
+		private double userLatitude;
 
 		
 
