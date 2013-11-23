@@ -13,8 +13,7 @@
 		
 
 		
-		public Bones(
-				double a, double b, double c, double d) {
+		public Bones(double a, double b, double c, double d) {
 			
 
 			this.startLongitude = a;
@@ -105,6 +104,8 @@
 			// TODO: still need to physically put an image of the ghost on the map
 		}
 
+		//TODO: stub that checks to see if new bones being created overlapps with existing bones???
+		
 		private double calculateLeftBound(double userLongitude,
 				double startLongitude, double userRadius) {
 

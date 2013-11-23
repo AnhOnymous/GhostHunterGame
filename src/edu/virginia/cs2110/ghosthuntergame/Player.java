@@ -25,12 +25,14 @@ public class Player {
 	double endLongitude;
 	double endLatitude;
 	
-	public void setStartLongitudeLatitude(double[] LatLang) {
-		this.startLongitude = LatLang[0];
-		this.startLatitude = LatLang[1];
-		this.endLongitude = LatLang[2];
-		this.endLatitude = LatLang[3];
-	}
+	
+//	???
+//	public void setStartLongitudeLatitude(double[] LatLang) {
+//		this.startLongitude = LatLang[0];
+//		this.startLatitude = LatLang[1];
+//		this.endLongitude = LatLang[2];
+//		this.endLatitude = LatLang[3];
+//	}
 	//private ArrayList<String> powerUps;
 	
 	public Player( double lat, double l){
