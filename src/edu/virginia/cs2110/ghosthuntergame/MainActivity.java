@@ -51,7 +51,7 @@ public class MainActivity extends FragmentActivity {
 			double longitude = location.getLongitude();
 
 			myPosition = new LatLng(latitude, longitude);
-
+			// Gameplay area is 2500?x2500? feet around the user
 			map.addMarker(new MarkerOptions().position(myPosition).title(
 					"Start"));
 
