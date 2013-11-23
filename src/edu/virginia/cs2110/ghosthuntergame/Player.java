@@ -20,7 +20,7 @@ public class Player {
 		this.maxHp=100;
 		this.currentHp=0;
 		this.playerLatitude=0.0;
-		this.playerLongitude=0.0;
+		this.playerLongitude=0.0;	
 	}
 	
 	public void gainMoney(int x){
