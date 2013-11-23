@@ -1,3 +1,7 @@
+package edu.virginia.cs2110.ghosthuntergame;
+
+import java.util.Random;
+
 
 	public class Bones{
 
