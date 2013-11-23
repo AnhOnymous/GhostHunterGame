@@ -4,7 +4,8 @@ public class Ghost {
 
 	private double ghostLong;
 	private double ghostLat;
-	private double tetherLimit;
+	private double tetherLat;
+	private double tetherLong;
 	private double boneLat;
 	private double boneLong;
 
@@ -24,7 +25,9 @@ public class Ghost {
 
 		boneLat=bones.getLatitude();
 		boneLong=bones.getLongitude();
-		
+		tetherLat = 50 * 0.00000274602523;
+		tetherLong = 50 * 0.0000034716614;
+		//THIS IS WHERE YOU WRITE IT (THE METHOD THAT YOU NEED TO WRITE)???????
 	}
 
 	/**
