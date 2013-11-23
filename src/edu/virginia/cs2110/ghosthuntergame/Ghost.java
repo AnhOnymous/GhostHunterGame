@@ -38,6 +38,8 @@ public class Ghost {
 		// 0.0000034716614 Degrees Longitude in ONE foot
 		// 0.00000621768663 Those two numbers added up for no real reason, but we'll use it.
 		
+		
+		//change back to ghosts
 		if ((Math.sqrt(Math.pow((player.getPlayerLatitude() - this.toastX), 2)
 				+ (Math.pow(player.getPlayerLongitude() - this.toastY, 2)))) <= 0.00000621768663) {
 			return true;
