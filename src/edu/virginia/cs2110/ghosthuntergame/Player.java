@@ -2,27 +2,57 @@ package edu.virginia.cs2110.ghosthuntergame;
 
 import java.util.ArrayList;
 
+
+/**
+ * Need an asynk task: constantly compare the players distance with nearby ghosts
+ * 
+ * need to store the bones and ghost arraylist inside of players, and access them from here
+ *
+ */
 public class Player {
 
 	private int points;
 	//private int exp;
 	//private int level;
-	private int maxHp;
+	
 	private int currentHp;
 	private int bombCount;
 	private double playerLatitude;
 	private double playerLongitude;
+	
+	double startLongitude;
+	double startLatitude;
+	double endLongitude;
+	double endLatitude;
+	
+	public void setStartLongitudeLatitude(double[] LatLang) {
+		this.startLongitude = LatLang[0];
+		this.startLatitude = LatLang[1];
+		this.endLongitude = LatLang[2];
+		this.endLatitude = LatLang[3];
+	}
 	//private ArrayList<String> powerUps;
 	
-	public Player(){
+	public Player( double lat, double l){
 		this.points=0;
 		//this.exp=0;
 		//this.level=0;
-		this.maxHp=3;
-		this.currentHp=0;
+	
+		this.currentHp=3;
 		this.bombCount=3;
-		this.playerLatitude=0.0;
-		this.playerLongitude=0.0;	
+		this.playerLatitude=lat;
+		this.playerLongitude=l;	
+	}
+	
+	//generate bones and ghosts
+	public ArrayList<Ghosts> generateGhosts(){
+		for(int i; i < 10; i ++){
+			Ghost(this);
+		}
+	}
+	
+	public ArrayList<Bones> generateBones(){
+		
 	}
 	
 //	public void gainMoney(int x){
