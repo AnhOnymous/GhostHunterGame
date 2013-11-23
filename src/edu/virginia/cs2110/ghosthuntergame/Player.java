@@ -4,58 +4,44 @@ import java.util.ArrayList;
 
 public class Player {
 
-	private int money;
-	private int exp;
-	private int level;
+	private int points;
+	//private int exp;
+	//private int level;
 	private int maxHp;
 	private int currentHp;
+	private int bombCount;
 	private double playerLatitude;
 	private double playerLongitude;
-	private ArrayList<String> powerUps;
+	//private ArrayList<String> powerUps;
 	
 	public Player(){
-		this.money=0;
-		this.exp=0;
-		this.level=0;
-		this.maxHp=100;
+		this.points=0;
+		//this.exp=0;
+		//this.level=0;
+		this.maxHp=3;
 		this.currentHp=0;
+		this.bombCount=3;
 		this.playerLatitude=0.0;
 		this.playerLongitude=0.0;
 	}
 	
-	public void gainMoney(int x){
-		money+=x;
-		exp+=x;
-	}
+//	public void gainMoney(int x){
+//		money+=x;
+//		exp+=x;
+//	}
 	
 	public void hurt(){
-		currentHp+= -10;
+		currentHp+= -1;
 	}
 	
-	
-	public int getMoney() {
-		return money;
+	public int getPoints() {
+		return points;
 	}
 
-	public void setMoney(int money) {
-		this.money = money;
+	public void setPoints(int points) {
+		this.points = points;
 	}
 
-	public int getExp() {
-		return exp;
-	}
-
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
 
 	public int getMaxHp() {
 		return maxHp;
@@ -88,14 +74,5 @@ public class Player {
 	public void setPlayerLongitude(double playerLongitude) {
 		this.playerLongitude = playerLongitude;
 	}
-
-	public ArrayList<String> getPowerUps() {
-		return powerUps;
-	}
-
-	public void setPowerUps(ArrayList<String> powerUps) {
-		this.powerUps = powerUps;
-	}
-
 	
 }
