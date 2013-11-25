@@ -27,6 +27,8 @@ public class Ghost {
 		boneLong = bones.getLongitude();
 		tetherLat = 50 * 0.00000274602523;
 		tetherLong = 50 * 0.0000034716614;
+		ghostLat = boneLat+tetherLat*(2*Math.random()-1);
+		ghostLong = boneLong+tetherLong*(2*Math.random()-1);
 		// Anh: THIS IS WHERE YOU WRITE IT (THE METHOD THAT YOU NEED TO
 		// WRITE)???????
 	}
