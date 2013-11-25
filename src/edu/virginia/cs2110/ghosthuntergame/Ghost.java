@@ -54,11 +54,11 @@ public class Ghost {
 	// }
 	// }
 
-	public double getGhostLong() {
+	public double getLongitude() {
 		return ghostLong;
 	}
 
-	public double getGhostLat() {
+	public double getLatitude() {
 		return ghostLat;
 	}
 

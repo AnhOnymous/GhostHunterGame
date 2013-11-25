@@ -2,6 +2,7 @@ package edu.virginia.cs2110.ghosthuntergame;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -17,7 +18,9 @@ public class MainActivity extends FragmentActivity {
 	GoogleMap map;
 	LatLng myPosition;
 	LatLng bonePosition;
+	LatLng ghostPosition;
 	public ArrayList<Marker> boneMarkerList = new ArrayList<Marker>();
+	public ArrayList<Marker> ghostMarkerList = new ArrayList<Marker>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,7 @@ public class MainActivity extends FragmentActivity {
 		newPlayer.generateBones();
 		newPlayer.generateGhosts();
 
+		// puts bones on map and markers into an arraylist
 		for (int i = 0; i < 10; i++) {
 			double boneLatitude = newPlayer.getBoneList().get(i).getLatitude();
 			double boneLongitude = newPlayer.getBoneList().get(i)
@@ -76,5 +80,21 @@ public class MainActivity extends FragmentActivity {
 
 			boneMarkerList.add(boneMarker);
 		}
+
+		// puts ghosts on map and markers into an arraylist
+		for (int i = 0; i < 10; i++) {
+			double ghostLatitude = newPlayer.getGhostList().get(i)
+					.getLatitude();
+			double ghostLongitude = newPlayer.getGhostList().get(i)
+					.getLongitude();
+			ghostPosition = new LatLng(ghostLatitude, ghostLongitude);
+
+			Marker ghostMarker = map.addMarker(new MarkerOptions().position(
+					myPosition).title("ghost"));
+
+			ghostMarkerList.add(ghostMarker);
+		}
+
 	}
+
 }
