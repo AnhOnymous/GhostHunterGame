@@ -26,90 +26,65 @@ public class Bones {
 		Random generator = new Random();
 
 		int sectionNum = generator.nextInt(7 + 1);
+		double sect = 8*Math.random();
+		sectionNum = (int)sect;
 
 		switch (sectionNum) {
 		case 0:
 			sectionNum = 0;
 			longitude = startLongitude
-					+ generator.nextInt((int) calculateLeftBound(userLongitude,
-							startLongitude, userRadius) + 1);
+					+ this.endLongitude/3*Math.random();
 			latitude = startLatitude
-					+ generator.nextInt((int) calculateUpperBound(userLatitude,
-							startLatitude, userRadius) + 1);
+					+ this.endLatitude/3*Math.random();
 		case 1:
 			sectionNum = 1;
 			longitude = startLongitude
-					+ generator.nextInt((int) calculateLeftBound(userLongitude,
-							startLongitude, userRadius) + 1)
-					+ calculateLeftBound(userLongitude, startLongitude,
-							userRadius);
+					+ this.endLongitude/3*(Math.random()+1);
 			latitude = startLatitude
-					+ generator.nextInt((int) calculateUpperBound(userLatitude,
-							startLatitude, userRadius) + 1);
+					+ this.endLatitude/3*Math.random();
 		case 2:
 			sectionNum = 2;
 			longitude = startLongitude
-					+ generator.nextInt((int) calculateLeftBound(userLongitude,
-							startLongitude, userRadius) + 1)
-					+ calculateRightBound(userLongitude, endLongitude,
-							userRadius);
-			// could use end latitude
+					+ this.endLongitude/3*(Math.random()+2);
 			latitude = startLatitude
-					+ generator.nextInt((int) calculateUpperBound(userLatitude,
-							startLatitude, userRadius) + 1);
+					+ this.endLatitude/3*Math.random();
 		case 3:
 			sectionNum = 3;
 			longitude = startLongitude
-					+ generator.nextInt((int) calculateLeftBound(userLongitude,
-							startLongitude, userRadius) + 1);
+					+ this.endLongitude/3*Math.random();
 			latitude = startLatitude
-					+ generator.nextInt((int) calculateUpperBound(userLatitude,
-							startLatitude, userRadius) + 1)
-					+ calculateUpperBound(userLatitude, startLatitude,
-							userRadius);
+					+ this.endLatitude/3*(Math.random()+1);
+//			longitude = startLongitude
+//					+ generator.nextInt((int) calculateLeftBound(userLongitude,
+//							startLongitude, userRadius) + 1);
+//			latitude = startLatitude
+//					+ generator.nextInt((int) calculateUpperBound(userLatitude,
+//							startLatitude, userRadius) + 1)
+//					+ calculateUpperBound(userLatitude, startLatitude,
+//							userRadius);
 		case 4:
 			sectionNum = 4;
 			longitude = startLongitude
-					+ generator.nextInt((int) calculateLeftBound(userLongitude,
-							startLongitude, userRadius) + 1)
-					+ calculateRightBound(userLongitude, endLongitude,
-							userRadius);
+					+ this.endLongitude/3*(Math.random()+2);
 			latitude = startLatitude
-					+ generator.nextInt((int) calculateUpperBound(userLatitude,
-							startLatitude, userRadius) + 1)
-					+ calculateUpperBound(userLatitude, startLatitude,
-							userRadius);
+					+ this.endLatitude/3*(Math.random()+1);
 		case 5:
-			sectionNum = 5;
 			longitude = startLongitude
-					+ generator.nextInt((int) calculateLeftBound(userLongitude,
-							startLongitude, userRadius) + 1);
-			latitude = startLatitude
-					+ generator.nextInt((int) calculateUpperBound(userLatitude,
-							startLatitude, userRadius) + 1)
-					+ calculateLowerBound(userLatitude, endLatitude, userRadius);
+			+ this.endLongitude/3*Math.random();
+	latitude = startLatitude
+			+ this.endLatitude/3*(Math.random()+2);
 		case 6:
 			sectionNum = 6;
 			longitude = startLongitude
-					+ generator.nextInt((int) calculateLeftBound(userLongitude,
-							startLongitude, userRadius) + 1)
-					+ calculateLeftBound(userLongitude, startLongitude,
-							userRadius);
+					+ this.endLongitude/3*(Math.random()+1);
 			latitude = startLatitude
-					+ generator.nextInt((int) calculateUpperBound(userLatitude,
-							startLatitude, userRadius) + 1)
-					+ calculateLowerBound(userLatitude, endLatitude, userRadius);
+					+ this.endLatitude/3*(Math.random()+2);
 		case 7:
 			sectionNum = 7;
 			longitude = startLongitude
-					+ generator.nextInt((int) calculateLeftBound(userLongitude,
-							startLongitude, userRadius) + 1)
-					+ calculateRightBound(userLongitude, endLongitude,
-							userRadius);
+					+ this.endLongitude/3*(Math.random()+2);
 			latitude = startLatitude
-					+ generator.nextInt((int) calculateUpperBound(userLatitude,
-							startLatitude, userRadius) + 1)
-					+ calculateLowerBound(userLatitude, endLatitude, userRadius);
+					+ this.endLatitude/3*(Math.random()+2);
 		default:
 			break;
 		}
@@ -120,29 +95,29 @@ public class Bones {
 	// TODO: stub that checks to see if new bones being created overlapps with
 	// existing bones???
 
-	private double calculateLeftBound(double userLongitude,
-			double startLongitude, double userRadius) {
-
-		return userLongitude - startLongitude - userRadius;
-	}
-
-	private double calculateRightBound(double userLongitude,
-			double endLongitude, double userRadius) {
-
-		return endLongitude - userLongitude + userRadius;
-	}
-
-	private double calculateUpperBound(double userLatitude,
-			double startLatitude, double userRadius) {
-
-		return userLatitude - startLatitude - userRadius;
-	}
-
-	private double calculateLowerBound(double userLatitude, double endLatitude,
-			double userRadius) {
-
-		return endLatitude - userLatitude + userRadius;
-	}
+//	private double calculateLeftBound(double userLongitude,
+//			double startLongitude, double userRadius) {
+//
+//		return userLongitude - startLongitude - userRadius;
+//	}
+//
+//	private double calculateRightBound(double userLongitude,
+//			double endLongitude, double userRadius) {
+//
+//		return endLongitude - userLongitude + userRadius;
+//	}
+//
+//	private double calculateUpperBound(double userLatitude,
+//			double startLatitude, double userRadius) {
+//
+//		return userLatitude - startLatitude - userRadius;
+//	}
+//
+//	private double calculateLowerBound(double userLatitude, double endLatitude,
+//			double userRadius) {
+//
+//		return endLatitude - userLatitude + userRadius;
+//	}
 
 	public double getLongitude() {
 		return longitude;
