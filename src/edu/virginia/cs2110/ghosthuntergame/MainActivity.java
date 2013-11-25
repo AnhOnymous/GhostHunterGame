@@ -19,6 +19,7 @@ public class MainActivity extends FragmentActivity {
 	LatLng myPosition;
 	LatLng bonePosition;
 	LatLng ghostPosition;
+	Player newPlayer;
 	public ArrayList<Marker> boneMarkerList = new ArrayList<Marker>();
 	public ArrayList<Marker> ghostMarkerList = new ArrayList<Marker>();
 
@@ -63,7 +64,7 @@ public class MainActivity extends FragmentActivity {
 					"Start"));
 		}
 		// creates new player with current location to generate bones and ghosts
-		Player newPlayer = new Player(myPosition.latitude, myPosition.longitude);
+		newPlayer = new Player(myPosition.latitude, myPosition.longitude);
 
 		newPlayer.generateBones();
 		newPlayer.generateGhosts();
@@ -94,6 +95,43 @@ public class MainActivity extends FragmentActivity {
 
 			ghostMarkerList.add(ghostMarker);
 		}
+
+	}
+
+	/**
+	 * handles what happens when pick up bones button is pressed 
+	 * bone and ghost markers removed 
+	 * bone and ghost removed 
+	 * bomb added
+	 */
+	public void pickUpBones() {
+		for (int i = 0; i < boneMarkerList.size(); i++) {
+			if ((Math.abs(myPosition.latitude
+					- boneMarkerList.get(i).getPosition().latitude)) < 5 * (0.00000274602523)
+					&& (Math.abs(myPosition.longitude
+							- boneMarkerList.get(i).getPosition().longitude)) < 5 * (0.0000034716614)) {
+				boneMarkerList.get(i).remove();
+				ghostMarkerList.get(i).remove();
+				ghostMarkerList.remove(i);
+				boneMarkerList.remove(i);
+				newPlayer.removeBones(i);
+				newPlayer.removeGhost(i);
+				newPlayer.addBomb(1);
+			}
+		}
+	}
+
+	/**
+	 * handles what happens when detonate bomb button is pressed
+	 */
+	public void detonateBomb() {
+		if (newPlayer.getBombCount() > 0) {
+			newPlayer.useBomb();
+
+		}
+
+		// wipes out all ghosts within certain surrounding area
+		// remove ghost marker from map
 
 	}
 

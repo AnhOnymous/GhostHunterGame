@@ -113,4 +113,24 @@ public class Player {
 	public ArrayList<Bones> getBoneList() {
 		return bonesList;
 	}
+
+	public void removeBones(int i) {
+		bonesList.remove(i);
+	}
+
+	public void removeGhost(int i) {
+		ghostList.remove(i);
+	}
+
+	public void addBomb(int i) {
+		bombCount += i;
+	}
+
+	public void useBomb() {
+		bombCount -= 1;
+	}
+
+	public int getBombCount() {
+		return bombCount;
+	}
 }
