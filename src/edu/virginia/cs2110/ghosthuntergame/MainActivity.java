@@ -1,5 +1,7 @@
 package edu.virginia.cs2110.ghosthuntergame;
 
+import java.util.ArrayList;
+
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -8,12 +10,14 @@ import android.support.v4.app.FragmentActivity;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 
 public class MainActivity extends FragmentActivity {
 	GoogleMap map;
 	LatLng myPosition;
+	LatLng bonePosition;
+	public ArrayList<Marker> boneMarkerList = new ArrayList<Marker>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,23 @@ public class MainActivity extends FragmentActivity {
 			// Gameplay area is 2500?x2500? feet around the user
 			map.addMarker(new MarkerOptions().position(myPosition).title(
 					"Start"));
+		}
+		// creates new player with current location to generate bones and ghosts
+		Player newPlayer = new Player(myPosition.latitude, myPosition.longitude);
 
+		newPlayer.generateBones();
+		newPlayer.generateGhosts();
+
+		for (int i = 0; i < 10; i++) {
+			double boneLatitude = newPlayer.getBoneList().get(i).getLatitude();
+			double boneLongitude = newPlayer.getBoneList().get(i)
+					.getLongitude();
+			bonePosition = new LatLng(boneLatitude, boneLongitude);
+
+			Marker boneMarker = map.addMarker(new MarkerOptions().position(
+					myPosition).title("bones"));
+
+			boneMarkerList.add(boneMarker);
 		}
 	}
 }
