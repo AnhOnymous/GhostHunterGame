@@ -120,7 +120,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	
-	private class AsyncTask1 extends AsyncTask<LatLng, void, boolean> {
+	private class AsyncTask extends AsyncTask<Object, void, boolean> {
 	
 		boolean xTrue;
 		boolean yTrue;
