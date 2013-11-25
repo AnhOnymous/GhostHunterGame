@@ -99,10 +99,8 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * handles what happens when pick up bones button is pressed 
-	 * bone and ghost markers removed 
-	 * bone and ghost removed 
-	 * bomb added
+	 * handles what happens when pick up bones button is pressed bone and ghost
+	 * markers removed bone and ghost removed bomb added
 	 */
 	public void pickUpBones() {
 		for (int i = 0; i < boneMarkerList.size(); i++) {
@@ -129,7 +127,6 @@ public class MainActivity extends FragmentActivity {
 			newPlayer.useBomb();
 
 		}
-
 		// wipes out all ghosts within certain surrounding area
 		// remove ghost marker from map
 
