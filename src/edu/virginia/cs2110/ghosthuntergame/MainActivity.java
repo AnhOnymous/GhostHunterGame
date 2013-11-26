@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -102,30 +103,46 @@ public class MainActivity extends FragmentActivity {
 
 				ghostMarkerList.add(ghostMarker);
 			}
+			new checkProximity().execute(newPlayer);
+		}
+	}
+
+	private class checkProximity extends AsyncTask<Player, Integer, String> {
+
+		protected void doInBackground(Player newPlayer) {
 			while (isHurt == false) {
 				for (int i = 0; i < newPlayer.getGhostList().size(); i++) {
 					// if within 5 feet, hurt
 					if ((Math.sqrt(Math.pow(
-							(newPlayer.getPlayerLatitude() - this.newPlayer
+							(newPlayer.getPlayerLatitude() - newPlayer
 									.getGhostList().get(i).getLatitude()), 2)
 							+ (Math.pow(newPlayer.getPlayerLongitude()
-									- this.newPlayer.getGhostList().get(i)
+									- newPlayer.getGhostList().get(i)
 											.getLongitude(), 2)))) <= (5 * 0.00000621768663)) {
 						newPlayer.hurt();
 						isHurt = true;
-						// call game over
+						Intent mainIntent = new Intent(MainActivity.this,
+								GameOver.class);
+						MainActivity.this.startActivity(mainIntent);
+						MainActivity.this.finish();
 					}
 					// if within 25 feet, danger
 					if ((Math.sqrt(Math.pow(
-							(newPlayer.getPlayerLatitude() - this.newPlayer
+							(newPlayer.getPlayerLatitude() - newPlayer
 									.getGhostList().get(i).getLatitude()), 2)
 							+ (Math.pow(newPlayer.getPlayerLongitude()
-									- this.newPlayer.getGhostList().get(i)
+									- newPlayer.getGhostList().get(i)
 											.getLongitude(), 2)))) <= (25 * 0.00000621768663)) {
 						// display danger text
 					}
 				}
 			}
+		}
+
+		@Override
+		protected String doInBackground(Player... arg0) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	}
 
