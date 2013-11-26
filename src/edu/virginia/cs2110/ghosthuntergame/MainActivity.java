@@ -288,6 +288,17 @@ public class MainActivity extends FragmentActivity {
 		pickUpBones();
 	}
 
+	public void showPoints(View view) {
+		Context context = getApplicationContext();
+		Toast toast = Toast.makeText(context,
+				"You have " + newPlayer.getPoints() + " points!",
+				Toast.LENGTH_LONG);
+		LinearLayout toastLayout = (LinearLayout) toast.getView();
+		TextView toastTV = (TextView) toastLayout.getChildAt(0);
+		toastTV.setTextSize(30);
+		toast.show();
+	}
+
 	public class GameOver extends Activity {
 
 		/** Called when the activity is first created. */
