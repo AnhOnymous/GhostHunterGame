@@ -8,9 +8,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -52,6 +54,16 @@ public class MainActivity extends FragmentActivity {
 		// Getting Current Location
 		Location location = locationManager.getLastKnownLocation(provider);
 
+		LatLngBounds here = new LatLngBounds(new LatLng(
+				location.getLatitude() - 1250 * (0.00000274602523),
+				location.getLongitude() - 1250 * (0.0000034716614)),
+				new LatLng(location.getLatitude() + 1250 * (0.00000274602523),
+						location.getLongitude() + 1250 * (0.0000034716614)));
+
+		// Set the camera to the greatest possible zoom level that includes the
+		// bounds
+		map.moveCamera(CameraUpdateFactory.newLatLngBounds(here, 0));
+
 		if (location != null) {
 			// Getting latitude of the current location
 			double latitude = location.getLatitude();
@@ -61,8 +73,11 @@ public class MainActivity extends FragmentActivity {
 
 			myPosition = new LatLng(latitude, longitude);
 			// Gameplay area is 2500?x2500? feet around the user
-			// map.addMarker(new MarkerOptions().position(myPosition).title(
-			// "Start"));
+
+			/*
+			 * map.addMarker(new MarkerOptions().position(myPosition).icon(
+			 * BitmapDescriptorFactory.fromResource(R.drawable.toast)));
+			 */
 
 			// creates new player with current location to generate bones and
 			// ghosts
@@ -105,6 +120,7 @@ public class MainActivity extends FragmentActivity {
 
 				ghostMarkerList.add(ghostMarker);
 			}
+
 		}
 	}
 
@@ -148,6 +164,5 @@ public class MainActivity extends FragmentActivity {
 		}
 		// wipes out all ghosts within certain surrounding area
 		// remove ghost marker from map
-
 	}
 }
