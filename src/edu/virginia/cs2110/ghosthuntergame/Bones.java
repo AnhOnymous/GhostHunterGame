@@ -33,27 +33,27 @@ public class Bones {
 		case 0:
 			sectionNum = 0;
 			longitude = startLongitude
-					+ this.endLongitude/3*Math.random();
+					+ (this.endLongitude-this.startLongitude)/3*Math.random();
 			latitude = startLatitude
-					+ this.endLatitude/3*Math.random();
+					+ (this.endLatitude-this.startLatitude)/3*Math.random();
 		case 1:
 			sectionNum = 1;
 			longitude = startLongitude
-					+ this.endLongitude/3*(Math.random()+1);
+					+ (this.endLongitude- this.startLongitude)/3*(Math.random()+1);
 			latitude = startLatitude
-					+ this.endLatitude/3*Math.random();
+					+ (this.endLatitude-this.startLatitude)/3*Math.random();
 		case 2:
 			sectionNum = 2;
 			longitude = startLongitude
-					+ this.endLongitude/3*(Math.random()+2);
+					+ (this.endLongitude- this.startLongitude)/3*(Math.random()+2);
 			latitude = startLatitude
-					+ this.endLatitude/3*Math.random();
+					+ (this.endLatitude-this.startLatitude)/3*Math.random();
 		case 3:
 			sectionNum = 3;
 			longitude = startLongitude
-					+ this.endLongitude/3*Math.random();
+					+ (this.endLongitude-this.startLongitude)/3*Math.random();
 			latitude = startLatitude
-					+ this.endLatitude/3*(Math.random()+1);
+					+ (this.endLatitude-this.startLatitude)/3*(Math.random()+1);
 //			longitude = startLongitude
 //					+ generator.nextInt((int) calculateLeftBound(userLongitude,
 //							startLongitude, userRadius) + 1);
@@ -65,26 +65,27 @@ public class Bones {
 		case 4:
 			sectionNum = 4;
 			longitude = startLongitude
-					+ this.endLongitude/3*(Math.random()+2);
+					+ (this.endLongitude-this.startLongitude)/3*(2+Math.random());
 			latitude = startLatitude
-					+ this.endLatitude/3*(Math.random()+1);
+					+ (this.endLatitude-this.startLatitude)/3*(1+Math.random());
 		case 5:
+			sectionNum = 5;
 			longitude = startLongitude
-			+ this.endLongitude/3*Math.random();
+			+ (this.endLongitude-this.startLongitude)/3*Math.random();
 	latitude = startLatitude
-			+ this.endLatitude/3*(Math.random()+2);
+			+ (this.endLatitude-this.startLatitude)/3*(Math.random()+2);
 		case 6:
 			sectionNum = 6;
 			longitude = startLongitude
-					+ this.endLongitude/3*(Math.random()+1);
+					+ (this.endLongitude-this.startLongitude)/3*(1+Math.random());
 			latitude = startLatitude
-					+ this.endLatitude/3*(Math.random()+2);
+					+ (this.endLatitude-this.startLatitude)/3*(2+Math.random());
 		case 7:
 			sectionNum = 7;
 			longitude = startLongitude
-					+ this.endLongitude/3*(Math.random()+2);
+					+ (this.endLongitude-this.startLongitude)/3*(2+Math.random());
 			latitude = startLatitude
-					+ this.endLatitude/3*(Math.random()+2);
+					+ (this.endLatitude-this.startLatitude)/3*(2+Math.random());
 		default:
 			break;
 		}
