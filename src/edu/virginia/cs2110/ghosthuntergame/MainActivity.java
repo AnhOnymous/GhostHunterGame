@@ -82,7 +82,7 @@ public class MainActivity extends FragmentActivity {
 				bonePosition = new LatLng(boneLatitude, boneLongitude);
 
 				Marker boneMarker = map.addMarker(new MarkerOptions().position(
-						bonePosition).title("bones"));
+						bonePosition).title("toaster"));
 
 				boneMarkerList.add(boneMarker);
 			}
@@ -150,7 +150,5 @@ public class MainActivity extends FragmentActivity {
 				}
 			}
 		}
-		// wipes out all ghosts within certain surrounding area
-		// remove ghost marker from map
 	}
 }
