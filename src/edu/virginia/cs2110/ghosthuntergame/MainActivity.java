@@ -3,7 +3,7 @@ package edu.virginia.cs2110.ghosthuntergame;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 public class MainActivity extends FragmentActivity {
 	GoogleMap map;
@@ -69,6 +70,25 @@ public class MainActivity extends FragmentActivity {
 
 			// creates new player with current location to generate bones and
 			// ghosts
+
+			map.addPolygon(new PolygonOptions()
+					.add(new LatLng(
+							location.getLatitude() - 1300 * (0.00000274602523),
+							location.getLongitude() - 1300 * (0.0000034716614)),
+							new LatLng(
+									location.getLatitude() - 1300 * (0.00000274602523),
+									location.getLongitude() + 1300 * (0.0000034716614)),
+							new LatLng(
+									location.getLatitude() + 1300 * (0.00000274602523),
+									location.getLongitude() + 1300 * (0.0000034716614)),
+							new LatLng(
+									location.getLatitude() + 1300 * (0.00000274602523),
+									location.getLongitude() - 1300 * (0.0000034716614)),
+							new LatLng(
+									location.getLatitude() - 1300 * (0.00000274602523),
+									location.getLongitude() - 1300 * (0.0000034716614)))
+					.strokeColor(Color.BLUE));
+
 			newPlayer = new Player(myPosition.latitude, myPosition.longitude);
 
 			newPlayer.generateBones();
@@ -137,7 +157,6 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		private void GameOver() {
-			int SPLASH_DISPLAY_LENGHT = 1000;
 			setContentView(R.layout.gameover);
 		}
 
