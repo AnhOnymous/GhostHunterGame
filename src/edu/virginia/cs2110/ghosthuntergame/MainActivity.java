@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -64,7 +65,7 @@ public class MainActivity extends FragmentActivity {
 				new LatLng(location.getLatitude() + 1250 * (0.00000274602523),
 						location.getLongitude() + 1250 * (0.0000034716614)));
 
-		// map.moveCamera(CameraUpdateFactory.newLatLngBounds(here, 0));
+		map.animateCamera(CameraUpdateFactory.newLatLngBounds(here, 0));
 
 		if (location != null) {
 			// Getting latitude of the current location
@@ -157,8 +158,11 @@ public class MainActivity extends FragmentActivity {
 						- boneMarkerList.get(i).getPosition().latitude)) < 50 * (0.00000274602523)
 						&& (Math.abs(myPosition.longitude
 								- boneMarkerList.get(i).getPosition().longitude)) < 50 * (0.0000034716614)) {
+					boneMarkerList.get(i).remove();
 					ghostMarkerList.get(i).remove();
 					ghostMarkerList.remove(i);
+					boneMarkerList.remove(i);
+					newPlayer.removeBones(i);
 					newPlayer.removeGhost(i);
 				}
 			}
