@@ -64,8 +64,7 @@ public class Player {
 
 	public void generateBones() {
 		for (int i = 0; i < 10; i++) {
-			Bones bones = new Bones(startLongitude, startLatitude,
-					endLongitude, endLatitude);
+			Bones bones = new Bones(this.playerLongitude, this.playerLatitude);
 			bonesList.add(bones);
 		}
 	}
