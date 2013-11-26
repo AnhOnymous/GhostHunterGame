@@ -65,7 +65,7 @@ public class MainActivity extends FragmentActivity {
 				new LatLng(location.getLatitude() + 1250 * (0.00000274602523),
 						location.getLongitude() + 1250 * (0.0000034716614)));
 
-		map.animateCamera(CameraUpdateFactory.newLatLngBounds(here, 0));
+		// map.animateCamera(CameraUpdateFactory.newLatLngBounds(here, 0));
 
 		if (location != null) {
 			// Getting latitude of the current location
