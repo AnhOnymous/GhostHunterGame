@@ -29,12 +29,6 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		ViewGroupOverlay custom;
-
-		View noBombs;
-
-		custom.add(noBombs);
-
 		setContentView(R.layout.activity_main);
 		// if Google Play Services are available then
 
