@@ -17,9 +17,30 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="46dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
         android:onClick="bombButton"
-        android:src="@drawable/common_signin_btn_icon_pressed_dark" />
+        android:src="@drawable/unnamed" >
+    </ImageButton>
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="300dp"
+        android:onClick="boneButton"
+        android:src="@drawable/grabtoaster" >
+    </ImageButton>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/heart" />
 
 </RelativeLayout>

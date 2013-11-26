@@ -3,6 +3,7 @@ package edu.virginia.cs2110.ghosthuntergame;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
@@ -11,7 +12,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -43,6 +48,10 @@ public class MainActivity extends FragmentActivity {
 		// Getting GoogleMap object from the fragment
 		map = fm.getMap();
 
+		map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+		map.setBuildingsEnabled(true);
+		map.setIndoorEnabled(true);
+
 		// Enabling MyLocation Layer of Google Map
 		map.setMyLocationEnabled(true);
 
@@ -66,10 +75,9 @@ public class MainActivity extends FragmentActivity {
 			double longitude = location.getLongitude();
 
 			myPosition = new LatLng(latitude, longitude);
-			// Gameplay area is 2500?x2500? feet around the user
 
-			// creates new player with current location to generate bones and
-			// ghosts
+			map.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition,
+					(float) 16.5));
 
 			map.addPolygon(new PolygonOptions()
 					.add(new LatLng(
@@ -89,6 +97,8 @@ public class MainActivity extends FragmentActivity {
 									location.getLongitude() - 1300 * (0.0000034716614)))
 					.strokeColor(Color.BLUE));
 
+			// creates new player with current location to generate bones and
+			// ghosts
 			newPlayer = new Player(myPosition.latitude, myPosition.longitude);
 
 			newPlayer.generateBones();
@@ -102,8 +112,11 @@ public class MainActivity extends FragmentActivity {
 						.getLongitude();
 				bonePosition = new LatLng(boneLatitude, boneLongitude);
 
-				Marker boneMarker = map.addMarker(new MarkerOptions().position(
-						bonePosition).title("toaster"));
+				Marker boneMarker = map.addMarker(new MarkerOptions()
+						.position(bonePosition)
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.tinytoaster))
+						.title("toaster"));
 
 				boneMarkerList.add(boneMarker);
 			}
@@ -124,6 +137,15 @@ public class MainActivity extends FragmentActivity {
 
 				ghostMarkerList.add(ghostMarker);
 			}
+
+			Context context = getApplicationContext();
+			Toast toast = Toast.makeText(context, "you have 3 bombs!",
+					Toast.LENGTH_SHORT);
+			LinearLayout toastLayout = (LinearLayout) toast.getView();
+			TextView toastTV = (TextView) toastLayout.getChildAt(0);
+			toastTV.setTextSize(30);
+			toast.show();
+
 			new checkProximity().execute(newPlayer);
 		}
 	}
@@ -141,6 +163,7 @@ public class MainActivity extends FragmentActivity {
 											.getLongitude(), 2)))) <= (5 * 0.00000621768663)) {
 						newPlayer.hurt();
 						isHurt = true;
+
 						GameOver();
 					}
 					if ((Math.sqrt(Math.pow(
@@ -161,7 +184,13 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		private void DangerMessage() {
-			// show danger message
+			Context context = getApplicationContext();
+			Toast toast = Toast.makeText(context, "you're in danger!",
+					Toast.LENGTH_SHORT);
+			LinearLayout toastLayout = (LinearLayout) toast.getView();
+			TextView toastTV = (TextView) toastLayout.getChildAt(0);
+			toastTV.setTextSize(30);
+			toast.show();
 			new checkProximity().execute(newPlayer);
 		}
 	}
@@ -176,6 +205,15 @@ public class MainActivity extends FragmentActivity {
 					- boneMarkerList.get(i).getPosition().latitude)) < 5 * (0.00000274602523)
 					&& (Math.abs(myPosition.longitude
 							- boneMarkerList.get(i).getPosition().longitude)) < 5 * (0.0000034716614)) {
+
+				Context context = getApplicationContext();
+				Toast toast = Toast.makeText(context, "toaster grabbed!",
+						Toast.LENGTH_SHORT);
+				LinearLayout toastLayout = (LinearLayout) toast.getView();
+				TextView toastTV = (TextView) toastLayout.getChildAt(0);
+				toastTV.setTextSize(30);
+				toast.show();
+
 				boneMarkerList.get(i).remove();
 				ghostMarkerList.get(i).remove();
 				ghostMarkerList.remove(i);
@@ -184,6 +222,14 @@ public class MainActivity extends FragmentActivity {
 				newPlayer.removeGhost(i);
 				newPlayer.addBomb(1);
 				newPlayer.addPoints(500);
+
+				Context context2 = getApplicationContext();
+				Toast toast2 = Toast.makeText(context, 1 + " bomb gained!",
+						Toast.LENGTH_SHORT);
+				LinearLayout toastLayout2 = (LinearLayout) toast.getView();
+				TextView toastTV2 = (TextView) toastLayout.getChildAt(0);
+				toastTV.setTextSize(30);
+				toast2.show();
 			}
 		}
 	}
@@ -192,7 +238,18 @@ public class MainActivity extends FragmentActivity {
 	 * handles what happens when detonate bomb button is pressed
 	 */
 	public void detonateBomb() {
+
 		if (newPlayer.getBombCount() > 0) {
+			new checkProximity().execute(newPlayer);
+
+			Context context = getApplicationContext();
+			Toast toast = Toast.makeText(context, newPlayer.getBombCount() - 1
+					+ " bombs remaining!", Toast.LENGTH_SHORT);
+			LinearLayout toastLayout = (LinearLayout) toast.getView();
+			TextView toastTV = (TextView) toastLayout.getChildAt(0);
+			toastTV.setTextSize(30);
+			toast.show();
+
 			newPlayer.useBomb();
 			for (int i = 0; i < ghostMarkerList.size(); i++) {
 				if ((Math.abs(myPosition.latitude
@@ -209,6 +266,18 @@ public class MainActivity extends FragmentActivity {
 				}
 			}
 		}
+
+		else {
+			new checkProximity().execute(newPlayer);
+
+			Context context = getApplicationContext();
+			Toast toast = Toast.makeText(context, "you have no bombs left!",
+					Toast.LENGTH_SHORT);
+			LinearLayout toastLayout = (LinearLayout) toast.getView();
+			TextView toastTV = (TextView) toastLayout.getChildAt(0);
+			toastTV.setTextSize(30);
+			toast.show();
+		}
 	}
 
 	public void bombButton(View view) {
@@ -220,8 +289,6 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public class GameOver extends Activity {
-
-		private final int SPLASH_DISPLAY_LENGHT = 1000;
 
 		/** Called when the activity is first created. */
 		@Override
