@@ -25,6 +25,7 @@ public class MainActivity extends FragmentActivity {
 	Player newPlayer;
 	public ArrayList<Marker> boneMarkerList = new ArrayList<Marker>();
 	public ArrayList<Marker> ghostMarkerList = new ArrayList<Marker>();
+	boolean isHurt = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +102,30 @@ public class MainActivity extends FragmentActivity {
 
 				ghostMarkerList.add(ghostMarker);
 			}
-
+			while (isHurt == false) {
+				for (int i = 0; i < newPlayer.getGhostList().size(); i++) {
+					// if within 5 feet, hurt
+					if ((Math.sqrt(Math.pow(
+							(newPlayer.getPlayerLatitude() - this.newPlayer
+									.getGhostList().get(i).getLatitude()), 2)
+							+ (Math.pow(newPlayer.getPlayerLongitude()
+									- this.newPlayer.getGhostList().get(i)
+											.getLongitude(), 2)))) <= (5 * 0.00000621768663)) {
+						newPlayer.hurt();
+						isHurt = true;
+						// call game over
+					}
+					// if within 25 feet, danger
+					if ((Math.sqrt(Math.pow(
+							(newPlayer.getPlayerLatitude() - this.newPlayer
+									.getGhostList().get(i).getLatitude()), 2)
+							+ (Math.pow(newPlayer.getPlayerLongitude()
+									- this.newPlayer.getGhostList().get(i)
+											.getLongitude(), 2)))) <= (25 * 0.00000621768663)) {
+						// display danger text
+					}
+				}
+			}
 		}
 	}
 
@@ -135,9 +159,9 @@ public class MainActivity extends FragmentActivity {
 			newPlayer.useBomb();
 			for (int i = 0; i < ghostMarkerList.size(); i++) {
 				if ((Math.abs(myPosition.latitude
-						- boneMarkerList.get(i).getPosition().latitude)) < 50 * (0.00000274602523)
+						- boneMarkerList.get(i).getPosition().latitude)) < 500 * (0.00000274602523)
 						&& (Math.abs(myPosition.longitude
-								- boneMarkerList.get(i).getPosition().longitude)) < 50 * (0.0000034716614)) {
+								- boneMarkerList.get(i).getPosition().longitude)) < 500 * (0.0000034716614)) {
 					boneMarkerList.get(i).remove();
 					ghostMarkerList.get(i).remove();
 					ghostMarkerList.remove(i);
