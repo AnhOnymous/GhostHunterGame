@@ -25,8 +25,8 @@ public class Bones {
 		this.lo= (c-a)*(0.0000034716614);
 		this.la= (d-b)*(0.00000274602523);
 		Random generator = new Random();
-		longitude = lo*Math.random();
-		latitude = la*Math.random();
+		longitude = a+lo*Math.random();
+		latitude = b + la*Math.random();
 		
 //		int sectionNum = generator.nextInt(7 + 1);
 //		double sect = 8 * Math.random();
