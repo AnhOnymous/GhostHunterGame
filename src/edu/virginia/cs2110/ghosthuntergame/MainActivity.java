@@ -107,42 +107,43 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	private class checkProximity extends AsyncTask<Player, Integer, String> {
+	private class checkProximity extends AsyncTask<Player, Integer, Integer> {
 
-		protected void doInBackground(Player newPlayer) {
+		protected Integer doInBackground(Player... params) {
 			while (isHurt == false) {
 				for (int i = 0; i < newPlayer.getGhostList().size(); i++) {
-					// if within 5 feet, hurt
 					if ((Math.sqrt(Math.pow(
 							(newPlayer.getPlayerLatitude() - newPlayer
 									.getGhostList().get(i).getLatitude()), 2)
 							+ (Math.pow(newPlayer.getPlayerLongitude()
 									- newPlayer.getGhostList().get(i)
-											.getLongitude(), 2)))) <= (5 * 0.00000621768663)) {
+											.getLongitude(), 2)))) <= (500 * 0.00000621768663)) {
 						newPlayer.hurt();
 						isHurt = true;
-						Intent mainIntent = new Intent(MainActivity.this,
-								GameOver.class);
-						MainActivity.this.startActivity(mainIntent);
-						MainActivity.this.finish();
+						return 1;
+
 					}
-					// if within 25 feet, danger
 					if ((Math.sqrt(Math.pow(
 							(newPlayer.getPlayerLatitude() - newPlayer
 									.getGhostList().get(i).getLatitude()), 2)
 							+ (Math.pow(newPlayer.getPlayerLongitude()
 									- newPlayer.getGhostList().get(i)
 											.getLongitude(), 2)))) <= (25 * 0.00000621768663)) {
-						// display danger text
 					}
 				}
 			}
-		}
-
-		@Override
-		protected String doInBackground(Player... arg0) {
 			// TODO Auto-generated method stub
 			return null;
+		}
+
+		protected void onPostExecute(int result) {
+			if (result == 1) {
+				Intent mainIntent = new Intent(MainActivity.this,
+						GameOver.class);
+				MainActivity.this.startActivity(mainIntent);
+				MainActivity.this.finish();
+			}
+
 		}
 	}
 
