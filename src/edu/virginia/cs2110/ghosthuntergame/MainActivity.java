@@ -115,7 +115,7 @@ public class MainActivity extends FragmentActivity {
 				Marker boneMarker = map.addMarker(new MarkerOptions()
 						.position(bonePosition)
 						.icon(BitmapDescriptorFactory
-								.fromResource(R.drawable.tinytoaster))
+								.fromResource(R.drawable.toaster))
 						.title("toaster"));
 
 				boneMarkerList.add(boneMarker);
@@ -132,7 +132,7 @@ public class MainActivity extends FragmentActivity {
 				Marker ghostMarker = map.addMarker(new MarkerOptions()
 						.position(ghostPosition)
 						.icon(BitmapDescriptorFactory
-								.fromResource(R.drawable.toast))
+								.fromResource(R.drawable.tinytoaster))
 						.title("toast ghost"));
 
 				ghostMarkerList.add(ghostMarker);
