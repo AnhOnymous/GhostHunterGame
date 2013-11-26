@@ -23,6 +23,7 @@ public class Player {
 
 	public ArrayList<Ghost> ghostList = new ArrayList<Ghost>();
 	public ArrayList<Bones> bonesList = new ArrayList<Bones>();
+	public ArrayList<Bones> ghostlessBonesList = new ArrayList<Bones>();
 
 	double startLongitude;
 	double startLatitude;
@@ -133,4 +134,5 @@ public class Player {
 	public int getBombCount() {
 		return bombCount;
 	}
+
 }

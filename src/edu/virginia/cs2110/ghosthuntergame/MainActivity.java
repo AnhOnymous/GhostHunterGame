@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -60,42 +61,54 @@ public class MainActivity extends FragmentActivity {
 
 			myPosition = new LatLng(latitude, longitude);
 			// Gameplay area is 2500?x2500? feet around the user
-			map.addMarker(new MarkerOptions().position(myPosition).title(
-					"Start"));
+			// map.addMarker(new MarkerOptions().position(myPosition).title(
+			// "Start"));
+
+			// creates new player with current location to generate bones and
+			// ghosts
+			newPlayer = new Player(myPosition.latitude, myPosition.longitude);
+
+			newPlayer.generateBones();
+			newPlayer.generateGhosts();
+
+			// puts bones on map and markers into an arraylist
+			for (int i = 0; i < 10; i++) {
+				double boneLatitude = newPlayer.getBoneList().get(i)
+						.getLatitude();
+				double boneLongitude = newPlayer.getBoneList().get(i)
+						.getLongitude();
+				bonePosition = new LatLng(boneLatitude, boneLongitude);
+
+				Marker boneMarker = map.addMarker(new MarkerOptions().position(
+						bonePosition).title("bones"));
+
+				map.addMarker(new MarkerOptions().position(myPosition).title(
+						"bones"));
+
+				boneMarkerList.add(boneMarker);
+			}
+
+			// puts ghosts on map and markers into an arraylist
+			for (int i = 0; i < 10; i++) {
+				double ghostLatitude = newPlayer.getGhostList().get(i)
+						.getLatitude();
+				double ghostLongitude = newPlayer.getGhostList().get(i)
+						.getLongitude();
+				ghostPosition = new LatLng(ghostLatitude, ghostLongitude);
+
+				Marker ghostMarker = map.addMarker(new MarkerOptions()
+						.position(myPosition).title("ghost"));
+
+				map.addMarker(
+						new MarkerOptions().position(ghostPosition).title(
+								"ghost"))
+						.setIcon(
+								BitmapDescriptorFactory
+										.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
+				ghostMarkerList.add(ghostMarker);
+			}
 		}
-		// creates new player with current location to generate bones and ghosts
-		newPlayer = new Player(myPosition.latitude, myPosition.longitude);
-
-		newPlayer.generateBones();
-		newPlayer.generateGhosts();
-
-		// puts bones on map and markers into an arraylist
-		for (int i = 0; i < 10; i++) {
-			double boneLatitude = newPlayer.getBoneList().get(i).getLatitude();
-			double boneLongitude = newPlayer.getBoneList().get(i)
-					.getLongitude();
-			bonePosition = new LatLng(boneLatitude, boneLongitude);
-
-			Marker boneMarker = map.addMarker(new MarkerOptions().position(
-					myPosition).title("bones"));
-
-			boneMarkerList.add(boneMarker);
-		}
-
-		// puts ghosts on map and markers into an arraylist
-		for (int i = 0; i < 10; i++) {
-			double ghostLatitude = newPlayer.getGhostList().get(i)
-					.getLatitude();
-			double ghostLongitude = newPlayer.getGhostList().get(i)
-					.getLongitude();
-			ghostPosition = new LatLng(ghostLatitude, ghostLongitude);
-
-			Marker ghostMarker = map.addMarker(new MarkerOptions().position(
-					myPosition).title("ghost"));
-
-			ghostMarkerList.add(ghostMarker);
-		}
-
 	}
 
 	/**
@@ -125,7 +138,16 @@ public class MainActivity extends FragmentActivity {
 	public void detonateBomb() {
 		if (newPlayer.getBombCount() > 0) {
 			newPlayer.useBomb();
-
+			for (int i = 0; i < ghostMarkerList.size(); i++) {
+				if ((Math.abs(myPosition.latitude
+						- boneMarkerList.get(i).getPosition().latitude)) < 50 * (0.00000274602523)
+						&& (Math.abs(myPosition.longitude
+								- boneMarkerList.get(i).getPosition().longitude)) < 50 * (0.0000034716614)) {
+					ghostMarkerList.get(i).remove();
+					ghostMarkerList.remove(i);
+					newPlayer.removeGhost(i);
+				}
+			}
 		}
 		// wipes out all ghosts within certain surrounding area
 		// remove ghost marker from map
