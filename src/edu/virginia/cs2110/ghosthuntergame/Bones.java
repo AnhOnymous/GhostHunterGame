@@ -21,10 +21,7 @@ public class Bones {
 		this.startLongitude = a;
 		this.startLatitude = b;
 		this.endLongitude = c;
-<<<<<<< HEAD
-		this.endLongitude = d;
-		
-=======
+
 		this.endLatitude = d;
 
 >>>>>>> branch 'master' of https://github.com/AnhOnymous/GhostHunterGame.git
