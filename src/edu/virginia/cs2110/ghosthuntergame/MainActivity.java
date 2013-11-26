@@ -29,7 +29,6 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
-		// if Google Play Services are available then
 
 		// Getting reference to the SupportMapFragment of activity_main.xml
 		SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager()
