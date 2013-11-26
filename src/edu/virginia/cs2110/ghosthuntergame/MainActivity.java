@@ -2,11 +2,13 @@ package edu.virginia.cs2110.ghosthuntergame;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -146,5 +148,13 @@ public class MainActivity extends FragmentActivity {
 				}
 			}
 		}
+	}
+
+	public void bombButton(View view) {
+		detonateBomb();
+	}
+
+	public void boneButton(View view) {
+		pickUpBones();
 	}
 }

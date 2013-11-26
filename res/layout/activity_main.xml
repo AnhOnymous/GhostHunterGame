@@ -19,7 +19,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="46dp"
         android:layout_marginLeft="60dp"
-        android:onClick="detonateBomb"
+        android:onClick="bombButton"
         android:src="@drawable/common_signin_btn_icon_pressed_dark" />
 
 </RelativeLayout>
