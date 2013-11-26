@@ -82,9 +82,6 @@ public class MainActivity extends FragmentActivity {
 				Marker boneMarker = map.addMarker(new MarkerOptions().position(
 						bonePosition).title("bones"));
 
-				map.addMarker(new MarkerOptions().position(myPosition).title(
-						"bones"));
-
 				boneMarkerList.add(boneMarker);
 			}
 
