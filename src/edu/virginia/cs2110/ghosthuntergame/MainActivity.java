@@ -2,6 +2,7 @@ package edu.virginia.cs2110.ghosthuntergame;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
@@ -117,11 +118,10 @@ public class MainActivity extends FragmentActivity {
 									.getGhostList().get(i).getLatitude()), 2)
 							+ (Math.pow(newPlayer.getPlayerLongitude()
 									- newPlayer.getGhostList().get(i)
-											.getLongitude(), 2)))) <= (500 * 0.00000621768663)) {
+											.getLongitude(), 2)))) <= (5 * 0.00000621768663)) {
 						newPlayer.hurt();
 						isHurt = true;
-						return 1;
-
+						GameOver();
 					}
 					if ((Math.sqrt(Math.pow(
 							(newPlayer.getPlayerLatitude() - newPlayer
@@ -129,21 +129,21 @@ public class MainActivity extends FragmentActivity {
 							+ (Math.pow(newPlayer.getPlayerLongitude()
 									- newPlayer.getGhostList().get(i)
 											.getLongitude(), 2)))) <= (25 * 0.00000621768663)) {
+						DangerMessage();
 					}
 				}
 			}
-			// TODO Auto-generated method stub
 			return null;
 		}
 
-		protected void onPostExecute(int result) {
-			if (result == 1) {
-				Intent mainIntent = new Intent(MainActivity.this,
-						GameOver.class);
-				MainActivity.this.startActivity(mainIntent);
-				MainActivity.this.finish();
-			}
+		private void GameOver() {
+			int SPLASH_DISPLAY_LENGHT = 1000;
+			setContentView(R.layout.gameover);
+		}
 
+		private void DangerMessage() {
+			// show danger message
+			new checkProximity().execute(newPlayer);
 		}
 	}
 
@@ -177,9 +177,9 @@ public class MainActivity extends FragmentActivity {
 			newPlayer.useBomb();
 			for (int i = 0; i < ghostMarkerList.size(); i++) {
 				if ((Math.abs(myPosition.latitude
-						- boneMarkerList.get(i).getPosition().latitude)) < 500 * (0.00000274602523)
+						- boneMarkerList.get(i).getPosition().latitude)) < 50 * (0.00000274602523)
 						&& (Math.abs(myPosition.longitude
-								- boneMarkerList.get(i).getPosition().longitude)) < 500 * (0.0000034716614)) {
+								- boneMarkerList.get(i).getPosition().longitude)) < 50 * (0.0000034716614)) {
 					boneMarkerList.get(i).remove();
 					ghostMarkerList.get(i).remove();
 					ghostMarkerList.remove(i);
@@ -198,5 +198,17 @@ public class MainActivity extends FragmentActivity {
 
 	public void boneButton(View view) {
 		pickUpBones();
+	}
+
+	public class GameOver extends Activity {
+
+		private final int SPLASH_DISPLAY_LENGHT = 1000;
+
+		/** Called when the activity is first created. */
+		@Override
+		public void onCreate(Bundle icicle) {
+			super.onCreate(icicle);
+			setContentView(R.layout.gameover);
+		}
 	}
 }
