@@ -7,10 +7,11 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.ViewGroupOverlay;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -27,6 +28,13 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		ViewGroupOverlay custom;
+
+		View noBombs;
+
+		custom.add(noBombs);
+
 		setContentView(R.layout.activity_main);
 		// if Google Play Services are available then
 
@@ -94,14 +102,14 @@ public class MainActivity extends FragmentActivity {
 				ghostPosition = new LatLng(ghostLatitude, ghostLongitude);
 
 				Marker ghostMarker = map.addMarker(new MarkerOptions()
-						.position(myPosition).title("ghost"));
+						.position(ghostPosition).title("ghost"));
 
-				map.addMarker(
-						new MarkerOptions().position(ghostPosition).title(
-								"ghost"))
-						.setIcon(
-								BitmapDescriptorFactory
-										.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+				/*
+				 * map.addMarker( new
+				 * MarkerOptions().position(ghostPosition).title( "ghost"))
+				 * .setIcon( BitmapDescriptorFactory
+				 * .defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+				 */
 
 				ghostMarkerList.add(ghostMarker);
 			}
