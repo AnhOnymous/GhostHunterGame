@@ -76,15 +76,15 @@ public class Player {
 	// }
 
 	public void hurt() {
-		currentHp += -1;
+		currentHp = 1;
 	}
 
 	public int getPoints() {
 		return points;
 	}
 
-	public void setPoints(int points) {
-		this.points = points;
+	public void addPoints(int points) {
+		this.points += points;
 	}
 
 	public int getCurrentHp() {

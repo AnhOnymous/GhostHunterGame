@@ -100,14 +100,6 @@ public class MainActivity extends FragmentActivity {
 						.icon(BitmapDescriptorFactory
 								.fromResource(R.drawable.toast))
 						.title("toast ghost"));
-				;
-
-				/*
-				 * map.addMarker( new
-				 * MarkerOptions().position(ghostPosition).title( "ghost"))
-				 * .setIcon( BitmapDescriptorFactory
-				 * .defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-				 */
 
 				ghostMarkerList.add(ghostMarker);
 			}
@@ -132,6 +124,7 @@ public class MainActivity extends FragmentActivity {
 				newPlayer.removeBones(i);
 				newPlayer.removeGhost(i);
 				newPlayer.addBomb(1);
+				newPlayer.addPoints(500);
 			}
 		}
 	}
@@ -153,6 +146,7 @@ public class MainActivity extends FragmentActivity {
 					boneMarkerList.remove(i);
 					newPlayer.removeBones(i);
 					newPlayer.removeGhost(i);
+					newPlayer.addPoints(500);
 				}
 			}
 		}
