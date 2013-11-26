@@ -7,10 +7,11 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -28,6 +29,9 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		View Custom;
+		// Custom.getOverlay().add(R.drawable.nobombs);
 
 		setContentView(R.layout.activity_main);
 		// if Google Play Services are available then
@@ -60,9 +64,7 @@ public class MainActivity extends FragmentActivity {
 				new LatLng(location.getLatitude() + 1250 * (0.00000274602523),
 						location.getLongitude() + 1250 * (0.0000034716614)));
 
-		// Set the camera to the greatest possible zoom level that includes the
-		// bounds
-		map.moveCamera(CameraUpdateFactory.newLatLngBounds(here, 0));
+		// map.moveCamera(CameraUpdateFactory.newLatLngBounds(here, 0));
 
 		if (location != null) {
 			// Getting latitude of the current location
@@ -73,11 +75,6 @@ public class MainActivity extends FragmentActivity {
 
 			myPosition = new LatLng(latitude, longitude);
 			// Gameplay area is 2500?x2500? feet around the user
-
-			/*
-			 * map.addMarker(new MarkerOptions().position(myPosition).icon(
-			 * BitmapDescriptorFactory.fromResource(R.drawable.toast)));
-			 */
 
 			// creates new player with current location to generate bones and
 			// ghosts
@@ -109,7 +106,11 @@ public class MainActivity extends FragmentActivity {
 				ghostPosition = new LatLng(ghostLatitude, ghostLongitude);
 
 				Marker ghostMarker = map.addMarker(new MarkerOptions()
-						.position(ghostPosition).title("ghost"));
+						.position(ghostPosition)
+						.icon(BitmapDescriptorFactory
+								.fromResource(R.drawable.toast))
+						.title("toast ghost"));
+				;
 
 				/*
 				 * map.addMarker( new
