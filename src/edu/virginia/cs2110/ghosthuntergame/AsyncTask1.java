@@ -1,4 +1,4 @@
-package edu.virginia.cs2110.ghosthuntergame;
+/*package edu.virginia.cs2110.ghosthuntergame;
 
 private class AsyncTask1 extends AsyncTask<LatLng, void, boolean> {
 	
@@ -43,4 +43,4 @@ private class AsyncTask1 extends AsyncTask<LatLng, void, boolean> {
 	
 	
 }
-}
+}*/
