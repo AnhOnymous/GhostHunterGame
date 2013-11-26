@@ -48,9 +48,9 @@ public class Player {
 		this.bombCount = 3;
 		this.playerLatitude = lat;
 		this.playerLongitude = l;
-		this.startLongitude = l + 1250 * (0.0000034716614);
+		this.startLongitude = l - 1250 * (0.0000034716614);
 		this.startLatitude = lat - 1250 * (0.00000274602523);
-		this.endLongitude = l - 1250 * (0.0000034716614);
+		this.endLongitude = l + 1250 * (0.0000034716614);
 		this.endLatitude = lat + 1250 * (0.00000274602523);
 	}
 
