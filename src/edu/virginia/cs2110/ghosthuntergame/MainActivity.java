@@ -31,9 +31,6 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		View Custom;
-		// Custom.getOverlay().add(R.drawable.nobombs);
-
 		setContentView(R.layout.activity_main);
 		// if Google Play Services are available then
 
@@ -58,14 +55,6 @@ public class MainActivity extends FragmentActivity {
 
 		// Getting Current Location
 		Location location = locationManager.getLastKnownLocation(provider);
-
-		LatLngBounds here = new LatLngBounds(new LatLng(
-				location.getLatitude() - 1250 * (0.00000274602523),
-				location.getLongitude() - 1250 * (0.0000034716614)),
-				new LatLng(location.getLatitude() + 1250 * (0.00000274602523),
-						location.getLongitude() + 1250 * (0.0000034716614)));
-
-		// map.animateCamera(CameraUpdateFactory.newLatLngBounds(here, 0));
 
 		if (location != null) {
 			// Getting latitude of the current location
