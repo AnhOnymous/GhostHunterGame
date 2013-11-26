@@ -22,8 +22,8 @@ public class Bones {
 		this.endLongitude = c;		
 		this.endLatitude = d;
 		
-		this.lo= 2500 * (0.0000034716614);
-		this.la= 2500 * (0.00000274602523);
+		this.lo= (c-a)*(0.0000034716614);
+		this.la= (d-b)*(0.00000274602523);
 		Random generator = new Random();
 
 		int sectionNum = generator.nextInt(7 + 1);
@@ -37,25 +37,28 @@ public class Bones {
 					+ (lo)/3*Math.random();
 			latitude = startLatitude
 					+ (la)/3*Math.random();
+			break;
 		case 1:
 			sectionNum = 1;
 			longitude = startLongitude
 					+ (lo)/3*(Math.random()+1);
 			latitude = startLatitude
 					+ (la)/3*Math.random();
+			break;
 		case 2:
 			sectionNum = 2;
 			longitude = startLongitude
 					+ (lo)/3*(Math.random()+2);
 			latitude = startLatitude
 					+ (la)/3*Math.random();
-
+			break;
 		case 3:
 			sectionNum = 3;
 			longitude = startLongitude
 					+ (lo)/3*Math.random();
 			latitude = startLatitude
 					+ (la)/3*(Math.random()+1);
+			break;
 //			longitude = startLongitude
 //					+ generator.nextInt((int) calculateLeftBound(userLongitude,
 //							startLongitude, userRadius) + 1);
@@ -79,24 +82,28 @@ public class Bones {
 					+ (lo)/3*(2+Math.random());
 			latitude = startLatitude
 					+ (la)/3*(1+Math.random());
+			break;
 		case 5:
 			sectionNum = 5;
 			longitude = startLongitude
 			+ (lo)/3*Math.random();
 	latitude = startLatitude
 			+ (la)/3*(Math.random()+2);
+	break;
 		case 6:
 			sectionNum = 6;
 			longitude = startLongitude
 					+ (lo)/3*(1+Math.random());
 			latitude = startLatitude
 					+ (la)/3*(2+Math.random());
+			break;
 		case 7:
 			sectionNum = 7;
 			longitude = startLongitude
 					+ (lo)/3*(2+Math.random());
 			latitude = startLatitude
 					+ (la)/3*(2+Math.random());
+			break;
 		default:
 			break;
 		}
